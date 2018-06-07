@@ -1,0 +1,78 @@
+body{
+    overflow: hidden;
+    margin: 0;
+}
+#message-container{
+    position: absolute;
+    margin: 2%;
+    height: 100px;
+    width: 400px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgba(230, 230, 230, 1) 0%,rgba(225,225,225,1) 5%,rgba(220,220,220,1) 100%);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 100px 300px; 
+    grid-template-rows: 75px 25px;
+    /* transform: translateX(600px); */
+    transition: all 1s ease-in-out;
+}
+#message-background{
+    overflow: hidden;
+    position: absolute;
+    /* background-size: cover; */
+    height: 100px;
+    width: 400px;
+    border-radius: 10px;
+    z-index: 0;
+    opacity: 0.15;
+    filter: blur(10px);
+    /* background: linear-gradient(to bottom, rgba(230, 230, 230, 0.67) 0%,rgba(225,225,225,0.65) 5%,rgba(220,220,220,0.6) 100%); */
+}
+#message-img{
+    grid-column: 1;
+    grid-row: 1/3;
+    margin: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 5px;
+    background-size: cover;
+    background-image: url("http://disco80.xyz/img/pages/no_album.png");
+}
+#message-title{
+    display: flex;
+    width: 95%;
+    height: 25pt;
+    overflow: hidden;
+    grid-column: 2;
+    grid-row: 1/3;
+    margin-top: 7%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 24pt;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+    word-break: break-all;
+    white-space: nowrap;
+}
+#message-subtitle{
+    display: flex;
+    width: 95%;
+    height: 15pt;
+    overflow: hidden;
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: -4%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    /* justify-content: center; */
+    align-items: top;
+    font-size: 14pt;
+    font-family: Helvetica, Arial, sans-serif;
+    word-break: break-all;
+}
+
+.hide{
+    transform: translateX(650px);
+}
