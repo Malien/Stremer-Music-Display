@@ -20,9 +20,11 @@ class NotificationTray {
         this.list.push(notification);
         var id = this.list.length - 1;
         this.list[id].move(this.offset);
+        console.log(notification);
+        console.log(this.list[id]);
         // this.list[id].container.style.transform = "translateY(" + str(this.offset) +"px)";
-        this.offset += this.list[id].size;
-        // this.list[id].render();
+        this.offset = this.offset + this.list[id].size;
+        this.list[id].render();
         if (timeout != 0) {
             this.remove(id, timeout);
         }
@@ -30,7 +32,7 @@ class NotificationTray {
     remove(id, timeout){
         setTimeout(function(){
             this.list[id].toggle();
-            this.offset -= this.list[id].size;
+            this.offset = this.offset - this.list[id].size;
             for (let i = 0; i < this.list.length; i++) {
                 setTimeout(function(){
                     if (i > id){
@@ -39,11 +41,11 @@ class NotificationTray {
                     }
                 }.bind(this), 500);
             }
-            // setTimeout(function(){
-            //     this.list[id].del();
-            //     delete this.list[id];
-            //     this.list.splice(id, 1);
-            // }.bind(this), 2000);
+            setTimeout(function(){
+                this.list[id].del();
+                delete this.list[id];
+                this.list.splice(id, 1);
+            }.bind(this), 2000);
         }.bind(this), timeout);
     }
 }
@@ -55,23 +57,18 @@ class Notification {
 
         this.container = document.createElement('div');
         this.container.id = 'message-container';
-        // document.body.appendChild(this.container);
 
         this.background = document.createElement('canvas');
         this.background.id = 'message-background';
-        // this.container.appendChild(this.background);
 
         this.icon = document.createElement('canvas');
         this.icon.id = 'message-img';
-        // this.container.appendChild(this.icon);
 
         this.title = document.createElement('div');
         this.title.id = 'message-title';
-        // this.container.appendChild(this.title);
 
         this.subTitle = document.createElement('div');
         this.subTitle.id = 'message-subtitle';
-        // this.container.appendChild(this.subTitle);
 
         var image = new Image();
         image.src = "data:image/jpeg;base64," + base64icon;
@@ -88,8 +85,7 @@ class Notification {
         this.subTitle.innerText = subText;
 
         this.isPresent = true;
-        // this.reveal();
-        this.render();
+        // this.render();
     }
     render(){
         document.body.appendChild(this.container);
